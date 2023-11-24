@@ -6,24 +6,18 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-6" *ngFor="let dino of dinosaurios">
-
-      <div class="card p-2" (click)="onSelected(dino)">
-              <img
-                class="card-img-top"
-                src="{{ dino.image }}"
-              />
-              <div class="card-body">
-                <h5 class="card-title">{{ dino.name }}</h5>
-                <p class="card-text">{{ dino.description}}</p>
-              </div>
-          </div>
-
+    <div class="col-md-6">
+      <div *ngFor="let dino of dinosaurios" class="card p-2" (click)="onSelected(dino)">
+        <img class="card-img-top" [src]="dino.image" />
+        <div class="card-body">
+          <h5 class="card-title">{{ dino.name }}</h5>
+          <p class="card-text">{{ dino.description }}</p>
+        </div>
       </div>
+    </div>
 
-      <div class="col-6">
-        <app-dinosaurio-detail *ngIf="seleccionado" [dinosaurio]="dinoSelect"></app-dinosaurio-detail>
-      </div>
-
-   </div>
+    <div class="col-md-6" *ngIf="seleccionado">
+      <app-dinosaurio-detail [dinosaurio]="dinoSelect"></app-dinosaurio-detail>
+    </div>
+  </div>
 </div>
